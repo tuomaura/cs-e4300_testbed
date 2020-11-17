@@ -19,17 +19,17 @@ Vagrant.configure("2") do |config|
     router.vm.hostname = "router"
     router.vbguest.auto_update = false
     ## NETWORK INTERFACES
-    # Interface towards Gateway S 
+    # Interface towards Gateway S
     router.vm.network "private_network",
       ip: "172.30.30.1",
       netmask: "255.255.255.0",
       virtualbox__intnet: "isp_link_s"
-    # Interface towards Gateway A 
+    # Interface towards Gateway A
     router.vm.network "private_network",
       ip: "172.16.16.1",
       netmask: "255.255.255.0",
       virtualbox__intnet: "isp_link_a"
-    # Interface towards Gateway B 
+    # Interface towards Gateway B
     router.vm.network "private_network",
       ip: "172.17.17.1",
       netmask: "255.255.255.0",
@@ -143,7 +143,6 @@ Vagrant.configure("2") do |config|
     client_a2.vm.box = "base"
     client_a2.vm.hostname = "client-a2"
     client_a2.vbguest.auto_update = false
-
     ## NETWORK INTERFACES
     # Interface towards customer site network
     client_a2.vm.network "private_network",
@@ -295,7 +294,6 @@ Vagrant.configure("2") do |config|
   # Students: Ok to modify the IP addresses in the cloud network ##
   #################################################################
 
-  
   # Gateway S
   config.vm.define "gateway-s" do |gateway_s|
     gateway_s.vm.box = "base"
@@ -307,7 +305,7 @@ Vagrant.configure("2") do |config|
       ip: "172.30.30.30",
       netmask: "255.255.255.0",
       virtualbox__intnet: "isp_link_s"
-    # Interface towards server network
+    # Interface towards cloud network
     gateway_s.vm.network "private_network",
       ip: "172.48.48.49",
       netmask: "255.255.255.240",
@@ -332,7 +330,7 @@ Vagrant.configure("2") do |config|
     server_s1.vm.hostname = "server-s1"
     server_s1.vbguest.auto_update = false
     ## NETWORK INTERFACES
-    # Interface towards clouser server network
+    # Interface towards cloud network
     server_s1.vm.network "private_network",
       ip: "172.48.48.51",
       netmask: "255.255.255.240",
@@ -360,7 +358,7 @@ Vagrant.configure("2") do |config|
     server_s2.vm.hostname = "server-s2"
     server_s2.vbguest.auto_update = false
     ## NETWORK INTERFACES
-    # Interface towards server network
+    # Interface towards cloud network
     server_s2.vm.network "private_network",
       ip: "172.48.48.52",
       netmask: "255.255.255.240",
