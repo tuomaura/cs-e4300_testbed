@@ -1,0 +1,5 @@
+{
+  "server_ip": "10.1.0.99",
+  "server_port": "8080",
+  "log_file": "/var/log/client.log"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "iot-server",
+  "main": "server.js",
+  "dependencies": {
+    "uuid": "*",
+    "express": "*",
+    "winston": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "private": true
+}

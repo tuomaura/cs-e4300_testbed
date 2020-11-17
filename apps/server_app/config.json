@@ -1,0 +1,4 @@
+{
+  "server_port": "8080",
+  "log_file": "/var/log/server.log"
+}

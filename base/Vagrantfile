@@ -1,0 +1,41 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+unless Vagrant.has_plugin?("vagrant-vbguest")
+  system('vagrant plugin install vagrant-vbguest')
+end
+
+unless Vagrant.has_plugin?("vagrant-reload")
+  system('vagrant plugin install vagrant-reload')
+end
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "base" do |base|
+    base.vm.box = "ubuntu/bionic64"
+
+    # Set the needed config for installing VirtualBox Guest Additions later in
+    # the make file
+    base.vbguest.auto_update = false
+    base.vbguest.iso_mount_point = "/tmp/mount"
+
+    base.vm.provider "virtualbox" do |v|
+      v.name = "base"
+      v.customize ["modifyvm", :id, "--groups", "/vpn"]
+      v.customize "post-comm", ['guestcontrol', :id, 'run', '--exe',
+        '/usr/bin/sudo', '--username', 'vagrant', '--password', 'vagrant',
+        '--wait-stdout', '--wait-stderr', '--', 'sudo/arg0', '/bin/mkdir',
+        '--mode', '777', '/tmp/mount']
+    end
+
+    # Full upgrade of the system
+    base.vm.provision :shell,
+      run: "always",
+      inline: "apt-get -y update && apt-get -y dist-upgrade",
+      privileged: true
+    # Reload the VM
+    base.vm.provision :reload
+    # Install dependencies
+    base.vm.provision :shell, path: "base.sh"
+  end
+end

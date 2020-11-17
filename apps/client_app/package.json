@@ -1,0 +1,16 @@
+{
+  "name": "iot-client",
+  "main": "client.js",
+  "dependencies": {
+    "uuid": "*",
+    "winston": "*"
+  },
+  "scripts": {
+    "start": "node client.js"
+  },
+  "description": "",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "private": true
+}
