@@ -10,4 +10,3 @@ ip6tables-save > /etc/iptables/rules.v6
 ## Install app
 cd /home/vagrant/server_app
 npm install
-

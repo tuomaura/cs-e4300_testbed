@@ -48,7 +48,7 @@ function ping() {
 
     var req = http.request(post_options, function(res) {
         res.setEncoding('utf8');
-        res.on('data', function(res_data_str) { 
+        res.on('data', function(res_data_str) {
             // TODO: read until end (in practice, all data is in the first IP packet)
             try {
                 res_data = JSON.parse(res_data_str);

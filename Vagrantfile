@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "isp_link_a"
     # Interface towards Gateway B
     router.vm.network "private_network",
-      ip: "172.17.17.1",
+      ip: "172.18.18.1",
       netmask: "255.255.255.0",
       virtualbox__intnet: "isp_link_b"
     router.vm.provider "virtualbox" do |vb|
@@ -178,7 +178,7 @@ Vagrant.configure("2") do |config|
     ## NETWORK INTERFACES
     # Interface towards router
     gateway_b.vm.network "private_network",
-      ip: "172.17.17.17",
+      ip: "172.18.18.18",
       netmask: "255.255.255.0",
       virtualbox__intnet: "isp_link_b"
     # Interface towards customer site network

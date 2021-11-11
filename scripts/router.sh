@@ -2,7 +2,7 @@
 
 #############################################################
 # Please do not modify this file. The router simulates the  #
-# public Internet and is not soemthing you can reconfigure. #
+# public Internet and is not something you can reconfigure. #
 #############################################################
 
 ## NAT traffic going to the internet, TODO: don't use the Vagrant ssh interface

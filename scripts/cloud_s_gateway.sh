@@ -3,7 +3,7 @@
 ## Traffic going to the internet
 route add default gw 172.30.30.1
 
-## Currently no NAT 
+## Currently no NAT
 #iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
 
 ## Save the iptables rules

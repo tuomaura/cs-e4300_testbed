@@ -1,4 +1,4 @@
-###### CS-E4300 Network Security, Aalto University 2020-2021
+###### CS-E4300 Network Security, Aalto University 2021-2022
 
 ### Virtual network environment for student projects
 
@@ -122,4 +122,4 @@ You should package your project solution to a small number of scripts and config
 
 You can make changes to the configuration scripts on the _scripts/_ folder. However, do not modify _router.sh_ because the Router simulates the public Internet, which you are not able to reconfigure.
 
-Additionally, you may want to change the cloud network to use a private IPv4 address space. It may be easiest to modify the IP addresses in _Vagrantfile_. Avoid making other changes to _Vagrantfile_.It is not strictly forbidden, though, if technically justified.
+Additionally, you may want to change the cloud network to use a private IPv4 address space. It may be easiest to modify the IP addresses in _Vagrantfile_. Avoid making other changes to _Vagrantfile_. It is not strictly forbidden, though, if technically justified.

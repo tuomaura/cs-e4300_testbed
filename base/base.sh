@@ -17,10 +17,8 @@ sudo apt-get -y install dialog debconf-utils apt-utils iputils-ping iptables\
 sudo apt-get -y install strongswan moreutils libstrongswan-extra-plugins
 
 # Install iptables-persistent
-sudo echo iptables-persistent iptables-persistent/autosave_v4 boolean true\
-  | debconf-set-selections
-sudo echo iptables-persistent iptables-persistent/autosave_v6 boolean true\
-  | debconf-set-selections
+sudo echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
+sudo echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
 sudo apt-get install -y iptables-persistent
 
 # Install libs
