@@ -46,7 +46,7 @@ cd base/
 ./make.ps1
 ```
 
-It may be necessary to update vagrant's plugin for virtual box guest additions, called vagrant-vbguest. It can be done with the following command:
+It may be necessary to update vagrant's plugin for virtual box guest additions (vagrant-vbguest). It can be done with the following command:
 ```
 vagrant plugin update
 ```
