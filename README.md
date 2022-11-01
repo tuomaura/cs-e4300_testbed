@@ -1,4 +1,4 @@
-###### CS-E4300 Network Security, Aalto University 2021-2022
+###### CS-E4300 Network Security, Aalto University 2022-2023
 
 ### Virtual network environment for student projects
 
@@ -44,6 +44,11 @@ Windows PowerShell:
 ```
 cd base/
 ./make.ps1
+```
+
+It may be necessary to update vagrant's plugin for virtual box guest additions, called vagrant-vbguest. It can be done with the following command:
+```
+vagrant plugin update
 ```
 
 3. Initialize the other VMs:
