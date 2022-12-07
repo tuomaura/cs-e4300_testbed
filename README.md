@@ -28,6 +28,8 @@ In each customer site, i.e. IoT client network, there is one VM (S) with the IP 
 
 1. Download and install the latest version of [Vagrant](https://www.vagrantup.com/docs/installation).
 
+The project has been tested with vagrant version 2.3.3 and VirtualBox version 6.1.40.
+
 If you already have VirtualBox installed, you might have to update Vagrant's plugin for VirtualBox guest additions (vagrant-vbguest):
 ```
 vagrant plugin update
@@ -54,6 +56,7 @@ cd base/
 3. Initialize the other VMs:
 
 ```bash
+cd ..
 vagrant up
 ```
 
