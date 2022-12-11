@@ -10,16 +10,7 @@ vagrant up base --provision
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
 vagrant vbguest base --status
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-vagrant vbguest base --do install --auto-reboot
+vagrant halt base
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-vagrant reload
+vagrant status
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-vagrant vbguest base --status
-if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-vagrant package --output ../base.box
-if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-vagrant box add base ../base.box -f
-if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-Remove-Item ../base.box -ErrorAction Ignore
-vagrant destroy -f base
-Remove-Item -path .\.vagrant -Recurse -Force -ErrorAction Ignore

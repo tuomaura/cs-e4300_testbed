@@ -1,0 +1,4 @@
+.vagrant
+base/.vagrant
+base.box
+base/*.log
