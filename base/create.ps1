@@ -14,4 +14,4 @@ vagrant box add base ../base.box -f
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
 vagrant destroy -f base
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-Remove-Item -rf .vagrant/
+Remove-Item -Recurse -Force .vagrant
