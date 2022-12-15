@@ -19,11 +19,6 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--groups", "/vpn"]
     end
 
-    # Full upgrade of the system
-    base.vm.provision :shell,
-      run: "always",
-      inline: "apt-get -y update && apt-get -y dist-upgrade && apt-get update -y --fix-missing",
-      privileged: true
     # Install dependencies
     base.vm.provision :shell, path: "base.sh"
     # Reload the VM

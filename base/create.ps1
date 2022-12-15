@@ -4,6 +4,7 @@
 
 vagrant destroy -f base
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
+vagrant box remove base
 vagrant up base --provision
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
 vagrant vbguest base --status

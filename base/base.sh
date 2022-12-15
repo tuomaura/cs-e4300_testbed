@@ -6,8 +6,10 @@ iptables-persistent iptables-persistent/autosave_v4 boolean true
 iptables-persistent iptables-persistent/autosave_v6 boolean true
 EOF
 
-sudo dpkg --configure -a
-sudo apt-get install -f
+# Install and upgrade
+apt-get update -y --fix-missing
+apt-get install -f
+apt-get -y dist-upgrade
 
 # Install tools for networking
 sudo apt-get install  -y dialog debconf-utils apt-utils iputils-ping iptables iputils-tracepath traceroute netcat conntrack nmap wget rsync iptables-persistent > /dev/null
