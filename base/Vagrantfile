@@ -17,6 +17,8 @@ Vagrant.configure("2") do |config|
     base.vm.provider "virtualbox" do |v|
       v.name = "base"
       v.customize ["modifyvm", :id, "--groups", "/vpn"]
+      v.customize ["modifyvm", :id, "--cpus", "2"]
+
     end
 
     # Install dependencies
