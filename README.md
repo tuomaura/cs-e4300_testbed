@@ -35,22 +35,22 @@ If you already have VirtualBox installed, you might have to update Vagrant's plu
 vagrant plugin update
 ```
 
-2. Initialize base VM:
+2. Initialize base VM (only once)
 
 The commands for building the base VM are provided in a simple Makefile (for Linux) and PowerShell script (for Windows). If the scripts do no work on your computer, simply run the commands manually. You only need to build the base VM once.
 
 Linux:
 
 ```bash
-cd base/
-make
+cd base
+./create.sh
 ```
 
 Windows PowerShell:
 
 ```
-cd base/
-./make.ps1
+cd base
+.\create.ps1
 ```
 
 3. Initialize the other VMs:
