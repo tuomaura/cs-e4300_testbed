@@ -1,10 +1,12 @@
-###### CS-E4300 Network Security, Aalto University 2022-2023
+###### CS-E4300 Network Security, Aalto University
 
 ### Virtual network environment for student projects
 
 _Authors: Tuomas Aura, Aleksi Peltonen, Thanh Bui_
 
-This project contains a testbed network setup for _Vagrant_ and _VirtualBox_. The testbed is intended for a specific course project at _Aalto University_, but it has been used in research for other experiments.
+This project contains a testbed network setup for _Vagrant_ and _VirtualBox_*. The testbed is intended for a specific course project at _Aalto University_, but it has been used in research for other experiments. 
+
+*) _Note: Only install the GPLv2-licensed version of VirtualBox. Do not download the proprietary extension pack. Oracle states that it is free for personal and educational use, but that is just a legal trap. The evil Oracle lawyers will claim that it was downloaded for some other use._
 
 ## Network Overview
 
@@ -30,7 +32,7 @@ In each customer site, i.e. IoT client network, there is one VM (S) with the IP 
 
 The project has been tested with vagrant version 2.3.4 and VirtualBox versions 6.1.40 and 7.0.4.
 
-If you already have VirtualBox installed, you might have to update Vagrant's plugin for VirtualBox guest additions (vagrant-vbguest):
+If you already have VirtualBox* installed, you might have to update Vagrant's plugin for VirtualBox guest additions (vagrant-vbguest):
 ```
 vagrant plugin update
 ```
