@@ -9,9 +9,12 @@ vagrant up base --provision
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
 vagrant vbguest base --status
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
+If (Test-Path ../base.box) {
+    Remove-Item -Force ../base.box
+}
 vagrant package --output ../base.box
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
-vagrant box add base ../base.box -f
+vagrant box add base -f ../base.box
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}
 vagrant destroy -f base
 if (-not $?) {throw 'Failed in: '+(Get-History -Count 1).CommandLine}

@@ -9,6 +9,7 @@ ENV["LC_ALL"] = "en_US.UTF-8"
 
 Vagrant.configure("2") do |config|
 
+  config.vm.boot_timeout = 1000
   #######################
   ## Internet          ##
   #######################
@@ -36,13 +37,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "isp_link_b"
     router.vm.provider "virtualbox" do |vb|
       vb.name = "router"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.111.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 256
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Install dependencies and define the NAT
     router.vm.provision :shell, run: "always", path: "scripts/router.sh"
@@ -70,13 +72,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "intranet_a"
     gateway_a.vm.provider "virtualbox" do |vb|
       vb.name = "gateway-a"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.112.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 256
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Install dependencies and define the NAT
     gateway_a.vm.provision :shell, run: "always", path: "scripts/site_a_gateway.sh"
@@ -95,13 +98,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "intranet_a"
     server_a.vm.provider "virtualbox" do |vb|
       vb.name = "server-a"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.113.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Server app
     server_a.vm.provision :file, source: './apps/server_app',
@@ -123,13 +127,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "intranet_a"
     client_a1.vm.provider "virtualbox" do |vb|
       vb.name = "client-a1"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.114.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Client app
     client_a1.vm.provision :file, source: './apps/client_app',
@@ -151,13 +156,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "intranet_a"
     client_a2.vm.provider "virtualbox" do |vb|
       vb.name = "client-a2"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.115.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Client app
     client_a2.vm.provision :file, source: './apps/client_app',
@@ -192,10 +198,10 @@ Vagrant.configure("2") do |config|
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.116.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 256
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Install dependencies and define the NAT
     gateway_b.vm.provision :shell, run: "always", path: "scripts/site_b_gateway.sh"
@@ -214,13 +220,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "intranet_b"
     server_b.vm.provider "virtualbox" do |vb|
       vb.name = "server-b"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.117.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Server app
     server_b.vm.provision :file, source: './apps/server_app',
@@ -242,13 +249,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "intranet_b"
     client_b1.vm.provider "virtualbox" do |vb|
       vb.name = "client-b1"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.118.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Client app
     client_b1.vm.provision :file, source: './apps/client_app',
@@ -274,10 +282,10 @@ Vagrant.configure("2") do |config|
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.119.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Client app
     client_b2.vm.provision :file, source: './apps/client_app',
@@ -312,13 +320,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "cloud_network_s"
     gateway_s.vm.provider "virtualbox" do |vb|
       vb.name = "gateway-s"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.120.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 256
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Install dependencies and define the NAT
     gateway_s.vm.provision :shell, run: "always", path: "scripts/cloud_s_gateway.sh"
@@ -337,13 +346,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "cloud_network_s"
     server_s1.vm.provider "virtualbox" do |vb|
       vb.name = "server-s1"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.121.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Server app
     server_s1.vm.provision :file, source: './apps/server_app',
@@ -365,13 +375,14 @@ Vagrant.configure("2") do |config|
       virtualbox__intnet: "cloud_network_s"
     server_s2.vm.provider "virtualbox" do |vb|
       vb.name = "server-s2"
+      vb.customize ["modifyvm", :id, "--groups", "/vpn"]
       # Change the default Vagrant ssh address
       vb.customize ['modifyvm', :id, '--natnet1', '192.168.122.0/24']
       # Performance
-      vb.cpus = 1
-      vb.memory = 512
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     # Server app
     server_s2.vm.provision :file, source: './apps/server_app',
